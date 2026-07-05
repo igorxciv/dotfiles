@@ -40,11 +40,12 @@ seed() {
 }
 
 # --- symlinks ---
-link "$REPO/zsh/.zshrc" "$HOME/.zshrc"
-link "$REPO/kitty"      "$CONFIG/kitty"
+link "$REPO/zsh/.zshrc"    "$HOME/.zshrc"
+link "$REPO/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
+link "$REPO/kitty"         "$CONFIG/kitty"
 
 # --- gitignored locals, seeded from *.example templates ---
-seed "$REPO/zsh/conf.local.d/local.zsh.example" "$REPO/zsh/conf.local.d/local.zsh"
-seed "$REPO/kitty/local.conf.example"           "$REPO/kitty/local.conf"
+seed "$REPO/zsh/conf.local.d/local.zsh.example"  "$REPO/zsh/conf.local.d/local.zsh"
+seed "$REPO/kitty/local.conf.example"            "$REPO/kitty/local.conf"
 
 printf '\n\033[32mdone.\033[0m  restart your shell or: exec zsh\n'
