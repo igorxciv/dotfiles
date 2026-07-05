@@ -1,0 +1,28 @@
+-- lua/plugins/local.lua - machine-specific / sensitive Neovim config. GITIGNORED.
+--
+-- Copy this to `local.lua` (install.sh does it for you) and edit. LazyVim
+-- auto-imports every *.lua in this directory, so `local.lua` loads automatically
+-- while staying out of git. Return a list of plugin specs, same as the other
+-- files here (an empty `return {}` is valid).
+--
+--     cp local.lua.example local.lua
+--
+-- Use it for anything you don't want committed or shared: work-only plugins,
+-- per-machine overrides, and secrets. Prefer pulling secrets from the
+-- environment over hardcoding them in this file.
+--
+-- Example - point an AI plugin at a key already exported in your shell:
+--
+--   return {
+--     {
+--       "yetone/avante.nvim",
+--       init = function()
+--         vim.env.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+--       end,
+--       opts = {
+--         -- provider = "openai",
+--       },
+--     },
+--   }
+
+return {}

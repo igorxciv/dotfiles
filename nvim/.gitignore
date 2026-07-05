@@ -1,0 +1,19 @@
+# LazyVim starter defaults: test / debug / build artifacts.
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+# --- machine-specific / sensitive config (not committed) ---
+# LazyVim auto-imports every lua/plugins/*.lua (see lua/config/lazy.lua). Keep
+# secrets & per-machine plugin specs in a local file that stays out of git; the
+# tracked lua/plugins/local.lua.example is the template install.sh copies from.
+lua/plugins/local.lua
+lua/plugins/*.local.lua
+
+# lazy-lock.json IS tracked on purpose (pins plugin commits -> reproducible
+# installs). Delete this comment if you'd rather not commit the lockfile.
