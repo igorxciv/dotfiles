@@ -1,0 +1,14 @@
+# Never track machine-specific config or secrets.
+# Ignore the whole directory, then un-ingore only the .example template.
+zsh/conf.local.d/*
+!zsh/conf.local.d/*.example
+
+# kitty: per-machine overrides only (font size, etc.); OS split stays tracked.
+kitty/local.conf
+# Escape hatch: one-off sessions that genuinely can't be parametrized.
+kitty/sessions/*.local.conf
+
+# OS / editor cruft
+.DS_Store
+*.swp
+
