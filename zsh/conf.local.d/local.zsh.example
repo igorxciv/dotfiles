@@ -1,0 +1,17 @@
+# conf.local.d/*.zsh - machine-specific config + secret sourcing. GITIGNORED.
+#
+# Copy this template (drop the .example) and edit; install.sh does it for you:
+#
+#     cp local.zsh.example local.zsh
+#
+# Everything in conf.local.d/ is sourced LAST, after conf.d/, so it overrides
+# anything above. Put here whatever shouldn't be committed or shared:
+#
+#   # a work laptop's extra bin dir
+#   path=("$HOME/work/toolchain/bin" $path)
+#
+#   # tool env that differs per machine
+#   export AWS_PROFILE="personal"
+#
+#   # secrets - keep the values out of the repo; source them from outside it
+#   [[ -r "$HOME/.secrets.zsh" ]] && source "$HOME/.secrets.zsh"
