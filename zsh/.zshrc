@@ -25,3 +25,11 @@ for _conf in "$ZSH_CONFIG_DIR"/conf.local.d/*.zsh(N); do
   source "$_conf"
 done
 unset _conf
+
+# pnpm
+export PNPM_HOME="/Users/igorxciv/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
