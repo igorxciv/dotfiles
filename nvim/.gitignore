@@ -15,5 +15,7 @@ data
 lua/plugins/local.lua
 lua/plugins/*.local.lua
 
-# lazy-lock.json IS tracked on purpose (pins plugin commits -> reproducible
-# installs). Delete this comment if you'd rather not commit the lockfile.
+# lazy-lock.json is NOT committed: it gets polluted with machine-local plugins
+# pulled in via local.lua, so we let each machine keep its own untracked lock.
+lazy-lock.json
+
