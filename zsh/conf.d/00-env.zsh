@@ -9,7 +9,7 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Editor / pager. EDITOR is the universal fallback; VISUAL is for full-screen
 # editors. Keep them in sync unless you deliberately want a lighter EDITOR.
-export EDITOR="${EDITOR:-vim}"
+export EDITOR="${EDITOR:-nvim}"
 export VISUAL="$EDITOR"
 export PAGER="${PAGER:-less}"
 
