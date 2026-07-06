@@ -11,3 +11,8 @@ kitty/sessions/*.local.conf
 # OS / editor cruft
 .DS_Store
 *.swp
+
+# oh-my-claudecode: session/runtime state is machine-local.
+# Ignore everything except committable project skills.
+.omc/*
+!.omc/skills/
