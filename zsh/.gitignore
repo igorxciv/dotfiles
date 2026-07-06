@@ -1,0 +1,6 @@
+# Never track machine-specific config or secrets.
+# Ignore the whole directory, then un-ignore only the .example template.
+conf.local.d/*
+!conf.local.d/*.example
+ 
+
