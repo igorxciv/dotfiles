@@ -10,6 +10,8 @@ tracked `*.example` templates. Re-running is always safe.
 
 ```
 .
+├── bootstrap.sh        # fresh machine: Xcode CLT + Homebrew + Brewfile + install.sh
+├── Brewfile            # declarative package manifest (brew bundle)
 ├── install.sh          # symlink everything + seed local overrides (idempotent)
 ├── zsh/
 │   ├── .zshrc          # thin loader → conf.d/ then conf.local.d/
@@ -37,11 +39,25 @@ tracked `*.example` templates. Re-running is always safe.
 
 ## Install
 
+**Fresh machine, one shot.** `bootstrap.sh` installs Xcode CLT + Homebrew,
+every package in the `Brewfile`, then runs `install.sh`:
+
 ```sh
-git clone git@github.com:igorxciv/dotfiles.git ~/dev/dotfiles
+git clone https://github.com/igorxciv/dotfiles.git ~/dev/dotfiles
 cd ~/dev/dotfiles
-./install.sh
-exec zsh          # pick up the new shell config
+./bootstrap.sh
+exec zsh
+```
+
+If git isn't available yet (bare macOS), bootstrap triggers the Xcode Command
+Line Tools install first — accept the GUI prompt, then re-run `./bootstrap.sh`.
+
+**Already have Homebrew / just want the packages or symlinks:**
+
+```sh
+brew bundle --file=Brewfile   # install/update all dependencies
+./install.sh                  # symlinks only (idempotent)
+exec zsh
 ```
 
 `install.sh` creates these symlinks (backing up any existing real file to
@@ -76,18 +92,33 @@ hook, seeded from a tracked `*.example` you can crib from:
 
 ## Requirements
 
+Everything below is captured in the [`Brewfile`](./Brewfile) — `bootstrap.sh`
+(or `brew bundle`) installs it all. Listed here for reference:
+
+**Hard requirements** (config targets these directly):
+
 - **Homebrew** — drives `brew shellenv` in `zsh/conf.d/10-path.zsh`.
-- **kitty**, **Neovim** (0.9+ for LazyVim).
-- Optional CLI tools the zsh config lights up when present (each is guarded, so
-  nothing breaks if a tool is missing):
+- **git** — repo clone + the `g*` aliases.
+- **kitty**, **Neovim** (0.11.2+, LuaJIT, per LazyVim).
+- **Agave Nerd Font Mono** — hardcoded in `kitty/conf.d/00-fonts.conf`; its
+  powerline glyphs are what `tab_bar.py` draws with (`cask font-agave-nerd-font`).
 
-  ```sh
-  brew install powerlevel10k eza bat zoxide yazi lazygit \
-    zsh-autosuggestions zsh-syntax-highlighting
-  ```
+**Prompt + zsh plugins** (sourced by path; the intended experience):
 
-- **rustup** if you use Rust — `10-path.zsh` sources `~/.cargo/env` when it
-  exists.
+- **powerlevel10k**, **zsh-autosuggestions**, **zsh-syntax-highlighting**.
+
+**CLI tools the zsh config lights up when present** (each guarded, so nothing
+breaks if missing):
+
+- **eza**, **bat**, **zoxide**, **yazi**, **lazygit**, **mise**.
+
+**LazyVim requirements** ([official list](https://www.lazyvim.org/#-requirements)) —
+**tree-sitter** (CLI) + a C compiler (Xcode CLT, which `bootstrap.sh` installs)
+for treesitter, **fzf**, **ripgrep**, **fd** for fzf-lua. `curl` (blink.cmp) and
+`git` ≥ 2.19 ship with macOS / are listed above.
+
+**Optional:** **rustup** if you use Rust — `10-path.zsh` sources `~/.cargo/env`
+when it exists (uncomment it in the `Brewfile`).
 
 ## Notes
 
