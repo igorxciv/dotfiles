@@ -17,3 +17,7 @@ unset -f _load_plugin
 # Tool shell-integrations that hook ZLE / chpwd. Run after compinit (50-*) so
 # their completions register. zoxide gives `z <frecent dir>` and `zi` (fuzzy).
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+
+# mise version manager - puts tool shims (node, python, ...) on PATH and hooks
+# precmd to switch versions per-directory from mise.toml / .mise.toml.
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
