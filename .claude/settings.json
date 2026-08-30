@@ -1,0 +1,37 @@
+{
+  "model": "opus",
+  "disableClaudeAiConnectors": true,
+  "disableWorkflows": true,
+  "disableBundledSkills": true,
+  "disableArtifact": true,
+
+  "permissions": {
+    "deny": [
+      "NotebookEdit",
+      "DesignSync",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "ScheduleWakeup",
+      "ReportFindings",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "PushNotification",
+      "RemoteTrigger",
+      "SendFeedback",
+      "AskUserQuestion"
+    ]
+  },
+
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0,
+    "refreshInterval": 60
+  },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  }
+}

@@ -45,6 +45,12 @@ link "$REPO/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
 link "$REPO/kitty"         "$CONFIG/kitty"
 link "$REPO/nvim"          "$CONFIG/nvim"
 
+# Claude Code: link individual entries - ~/.claude also holds runtime state
+# (sessions, projects, history) that must not live in the repo.
+link "$REPO/.claude/settings.json"  "$HOME/.claude/settings.json"
+link "$REPO/.claude/statusline.sh"  "$HOME/.claude/statusline.sh"
+link "$REPO/.claude/skills"         "$HOME/.claude/skills"
+
 # --- gitignored locals, seeded from *.example templates ---
 seed "$REPO/zsh/conf.local.d/local.zsh.example"  "$REPO/zsh/conf.local.d/local.zsh"
 seed "$REPO/kitty/local.conf.example"            "$REPO/kitty/local.conf"
