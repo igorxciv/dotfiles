@@ -2,7 +2,5 @@
 .DS_Store
 *.swp
 
-# oh-my-claudecode: session/runtime state is machine-local.
-# Ignore everything except committable project skills.
-.omc/*
-!.omc/skills/
+# .claude
+.claude/settings.local.json
