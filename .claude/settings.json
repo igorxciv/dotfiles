@@ -1,10 +1,4 @@
 {
-  "model": "opus",
-  "disableClaudeAiConnectors": true,
-  "disableWorkflows": true,
-  "disableBundledSkills": true,
-  "disableArtifact": true,
-
   "permissions": {
     "deny": [
       "NotebookEdit",
@@ -22,7 +16,11 @@
       "AskUserQuestion"
     ]
   },
-
+  "model": "opus",
+  "disableClaudeAiConnectors": true,
+  "disableBundledSkills": true,
+  "disableWorkflows": true,
+  "disableArtifact": true,
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
@@ -33,5 +31,6 @@
     "claude-opus-5": {
       "effortLevel": "medium"
     }
-  }
+  },
+  "autoMemoryEnabled": false
 }
